@@ -1,42 +1,47 @@
 # Pitchlabs Discord Bot
 
-Welcome to Pitchlabs Community Bot!
+Welcome to the Pitchlabs Community Bot! 🚀
 
 ## Getting Started
 
-1. **Setup Your Environment:**
+### 1. **Create Discord Bot:**
 
-   - Create a `.env` file by copying the provided `.env.example`. Fill in the variables with the values obtained after creating your bot.
+- Head over to the [Discord Developer Portal](https://discord.com/developers/applications) and click on `New Application`.
+- Move to the `Bot` tab:
+  - Turn off `PUBLIC BOT` to restrict bot access.
+  - Enable `Privileged Gateway Intents` for enhanced functionality.
+- Navigate to the `OAuth2` tab and generate a URL:
+  - Under `SCOPES`, select `bot` and `applications.commands`.
+  - In `BOT PERMISSIONS`, choose `Administrator`.
+  - Copy the generated URL and either paste it in your browser or directly into your Discord server. Click on the link to invite your bot.
 
-2. **Create Your Discord Bot:**
+### 2. **Set Up Your Environment:**
 
-   - Visit [Discord Developer Portal](https://discord.com/developers/applications) and click on `New Application`.
-   - Navigate to the `Bot` tab:
-     - Turn off `PUBLIC BOT` to restrict bot access.
-     - Enable `Privileged Gateway Intents` for enhanced functionality.
-   - Go to `OAuth2` tab and generate a URL:
-     - Under `SCOPES`, choose `bot` and `applications.commands`.
-     - Under `BOT PERMISSIONS`, choose `Administrator`.
-     - Copy the generated URL and either paste it in your browser, or directly into your Discord server then click on it.
+- Start by creating a `.env` file. You can use the provided `.env.example` as a template. Fill in the variables with the values obtained after creating your bot.
 
-3. **Add Bot Token to .env:**
+### 3. **Add Bot Token to .env:**
 
-   - In your `.env` file, add the obtained `DISCORD_BOT_TOKEN` from the `Bot` tab. Click on `Reset Token` and then `copy` to get the token value.
+- Open your `.env` file and add the obtained `DISCORD_BOT_TOKEN` from the `Bot` tab. Click on `Reset Token` and then `copy` to get the token value.
 
-4. **Install Dependencies:**
+### 4. **Install Dependencies:**
 
-   - Ensure you have [Node.js](https://nodejs.org/en) installed.
-   - Install required packages by running:
-     ```bash
-     npm install
-     ```
+- Ensure you have [Node.js](https://nodejs.org/en) installed on your system.
+- Install the required packages by running:
+  ```bash
+  npm install
+  ```
+- For production, use `npm install --production`.
 
-5. **Start Your Bot:**
-   - Launch your bot with:
-     ```bash
-     npm start
-     ```
-   - If you're developing, use `npm run dev` to enable development mode.
+### 5. **Start Your Bot:**
+
+- Launch your bot in development mode:
+  ```bash
+  npm run dev
+  ```
+- For production, use:
+  ```bash
+  npm start
+  ```
 
 ## Documentation and Resources
 
