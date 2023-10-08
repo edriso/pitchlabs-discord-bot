@@ -10,4 +10,6 @@ const client = new Client({
   ],
 });
 
+client.on('ready', (c) => console.log(`${c.user.tag} is online.`));
+
 client.login(process.env.DISCORD_BOT_TOKEN);
