@@ -1,6 +1,4 @@
-import client from '../bot.js';
-
-export default function welcome() {
+export const initialize = (client) => {
   client.on('guildMemberAdd', (member) => {
     const introductionChannel = member.guild.channels.cache.find(
       (channel) => channel.name === 'introduction',
@@ -18,4 +16,4 @@ export default function welcome() {
       console.log('Introduction channel not found.');
     }
   });
-}
+};
