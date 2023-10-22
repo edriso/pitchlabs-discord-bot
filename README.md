@@ -39,9 +39,26 @@ Welcome to the Pitchlabs Community Bot! 🚀
   npm run dev
   ```
 - For production, use:
+
   ```bash
   npm start
   ```
+
+## Key Points to Remember
+
+- Inside the `/features` directory, there are files that are automatically executed using the `initializeFeatures` function in `index.js`.
+  These files are essential for expanding the bot's functionality. Each feature should be contained within its own file, making it easier to manage and maintain the bot's capabilities.
+
+  - **Adding New Features:**
+    If you want to add a new feature to the bot, create a new file in the `/features` directory. The content of this file should look like this:
+
+    ```javascript
+    export const initialize = () => {
+      // Your feature logic goes here
+    };
+    ```
+
+    Inside the `initialize` function, write the code for your new feature. This is where you'll define what the feature does and how it interacts with your Discord bot.
 
 ## Documentation and Resources
 
