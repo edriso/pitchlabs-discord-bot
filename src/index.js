@@ -23,7 +23,7 @@ const initializeFeatures = async () => {
           const moduleUrl = `file://${modulePath}`;
           const { initialize } = await import(moduleUrl);
           if (initialize && typeof initialize === 'function') {
-            initialize(client);
+            initialize();
           } else {
             console.warn(
               `Feature ${file} does not have a valid initialize function.`,

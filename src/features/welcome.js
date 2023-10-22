@@ -1,4 +1,6 @@
-export const initialize = (client) => {
+import client from '../bot.js';
+
+export const initialize = () => {
   client.on('guildMemberAdd', (member) => {
     let introductionChannel;
     let generalChannel;
