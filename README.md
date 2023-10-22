@@ -30,7 +30,7 @@ Welcome to the Pitchlabs Community Bot! 🚀
   ```bash
   npm install
   ```
-- For production, use `npm install --production`.
+- For production, use: `npm install --production`.
 
 ### 5. **Start Your Bot:**
 
@@ -38,11 +38,7 @@ Welcome to the Pitchlabs Community Bot! 🚀
   ```bash
   npm run dev
   ```
-- For production, use:
-
-  ```bash
-  npm start
-  ```
+- For production, use: `npm start`.
 
 ## Key Points to Remember
 
