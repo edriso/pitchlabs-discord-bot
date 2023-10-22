@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import dotenv from 'dotenv';
 import client from './bot.js';
-import connectDB from '../db/connect.js';
+import connectDB from './db/connect.js';
 
 dotenv.config();
 
