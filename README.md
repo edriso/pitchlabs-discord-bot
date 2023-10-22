@@ -17,13 +17,11 @@ Welcome to the Pitchlabs Community Bot! 🚀
 
 ### 2. **Set Up Your Environment:**
 
-- Start by creating a `.env` file. You can use the provided `.env.example` as a template. Fill in the variables with the values obtained after creating your bot.
+- Start by creating a `.env` file. You can use the provided `.env.example` as a template. Then fill in the variables with the necessary values.
 
-### 3. **Add Bot Token to .env:**
+  - `DISCORD_BOT_TOKEN` is obtained from the `Bot` tab. Click on `Reset Token` and then `copy` to get the token value.
 
-- Open your `.env` file and add the obtained `DISCORD_BOT_TOKEN` from the `Bot` tab. Click on `Reset Token` and then `copy` to get the token value.
-
-### 4. **Install Dependencies:**
+### 3. **Install Dependencies:**
 
 - Ensure you have [Node.js](https://nodejs.org/en) installed on your system.
 - Install the required packages by running:
@@ -32,7 +30,7 @@ Welcome to the Pitchlabs Community Bot! 🚀
   ```
 - For production, use: `npm install --production`.
 
-### 5. **Start Your Bot:**
+### 4. **Start Your Bot:**
 
 - Launch your bot in development mode:
   ```bash
