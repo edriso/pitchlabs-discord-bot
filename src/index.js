@@ -3,10 +3,16 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import dotenv from 'dotenv';
 import client from './bot.js';
+import connectDB from '../db/connect.js';
 
 dotenv.config();
 
-client.on('ready', () => {
+client.on('ready', async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+  } catch (error) {
+    console.error(`Error while connecting to DB:`, error);
+  }
   console.log(`${client.user.tag} is online.`);
 });
 
