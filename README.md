@@ -46,7 +46,7 @@ Welcome to the Pitchlabs Community Bot! 🚀
   These files are essential for expanding the bot's functionality. Each feature should be contained within its own file, making it easier to manage and maintain the bot's capabilities.
 
   - **Adding New Features:**
-    If you want to add a new feature to the bot, create a new file in the `/features` directory. The content of this file should look like this:
+    If you want to add a new feature to the bot, create a new JavaScript file in the `/features` directory. The content of this file should look like this:
 
     ```javascript
     export const initialize = () => {
