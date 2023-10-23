@@ -7,14 +7,10 @@ import connectDB from './db/connect.js';
 
 dotenv.config();
 
-client.on('ready', async () => {
-  try {
-    await connectDB(process.env.MONGO_URI);
-  } catch (error) {
-    console.error(`Error while connecting to DB:`, error);
-  }
-  console.log(`${client.user.tag} is online.`);
-});
+if (!process.env.DISCORD_BOT_TOKEN || !process.env.MONGO_URI) {
+  console.error('Required environment variables are missing.');
+  process.exit(1);
+}
 
 const initializeFeatures = async () => {
   try {
@@ -36,7 +32,11 @@ const initializeFeatures = async () => {
             );
           }
         } catch (error) {
-          console.error(`Error initializing feature ${file}:`, error);
+          if (error.code === 'MODULE_NOT_FOUND') {
+            console.warn(`Feature file ${file} not found.`);
+          } else {
+            console.error(`Error initializing feature ${file}:`, error);
+          }
         }
       }
     }
@@ -44,9 +44,21 @@ const initializeFeatures = async () => {
     console.error('Error reading features directory:', error);
   }
 };
-initializeFeatures();
 
-client.login(process.env.DISCORD_BOT_TOKEN);
+(async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    initializeFeatures();
+  } catch (error) {
+    console.error(`Error while connecting to DB:`, error);
+  }
+
+  client.on('ready', () => {
+    console.log(`${client.user.tag} is online.`);
+  });
+
+  client.login(process.env.DISCORD_BOT_TOKEN);
+})();
 
 client.on('error', (error) => {
   console.error('The bot encountered an error:', error);
