@@ -4,6 +4,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import client from './bot.js';
 import connectDB from './db/connect.js';
+import spamPrevention from './handlers/spamPrevention.js';
 
 dotenv.config();
 
@@ -57,9 +58,14 @@ const initializeFeatures = async () => {
     console.log(`${client.user.tag} is online.`);
   });
 
+  // Events
+  client.on('messageCreate', (message) => {
+    spamPrevention.execute(message);
+  });
+
+  client.on('error', (error) => {
+    console.error('The bot encountered an error:', error);
+  });
+
   client.login(process.env.DISCORD_BOT_TOKEN);
 })();
-
-client.on('error', (error) => {
-  console.error('The bot encountered an error:', error);
-});
