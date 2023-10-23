@@ -1,5 +1,5 @@
 import client from '../bot.js';
-import { ChannelNames } from '../utils/constants.js';
+import { ChannelNames } from '../config/constants.js';
 
 export const initialize = () => {
   client.on('guildMemberAdd', (member) => {

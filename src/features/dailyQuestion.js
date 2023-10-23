@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import client from '../bot.js';
-import { ChannelTypes, ChannelNames } from '../utils/constants.js';
-import { questions } from '../utils/questions.js';
+import { ChannelTypes, ChannelNames } from '../config/constants.js';
+import { questions } from '../config/questions.js';
 
 let lastQuestionAsked = '';
 const getRandomQuestion = () => {
