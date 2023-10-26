@@ -2,6 +2,8 @@ export const SPAM_THRESHOLD = 5;
 export const MUTE_DURATION = 10 * 60 * 1000;
 export const BAN_THRESHOLD = 2;
 
+export const BUMP_COOLDOWN_DURATION = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
+
 export const ChannelNames = {
   GENERAL: 'general',
   INTRODUCTION: 'introduction',
