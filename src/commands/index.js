@@ -1,13 +1,6 @@
-import dotenv from 'dotenv';
-import { REST, Routes } from 'discord.js';
 import client from '../bot.js';
-import { bumpHandler } from './commandHandlers/bump.js';
-
-dotenv.config();
-
-const rest = new REST({ version: '10' }).setToken(
-  process.env.DISCORD_BOT_TOKEN,
-);
+import { registerSlashCommands } from './commandHandlers/registerSlashCommands.js';
+import { handleBumpInteraction } from './commandHandlers/handleBumpInteraction.js';
 
 const commands = [
   {
@@ -16,26 +9,21 @@ const commands = [
   },
 ];
 
-export const registerCommands = async () => {
+const registerCommands = async () => {
   try {
-    await rest.put(
-      Routes.applicationGuildCommands(process.env.BOT_ID, process.env.GUILD_ID),
-      { body: commands },
-    );
-
+    await registerSlashCommands(commands);
     console.log('Successfully registered application commands (/).');
 
     client.on('interactionCreate', async (interaction) => {
-      // return if it was not a /slash command
       if (!interaction.isChatInputCommand()) return;
 
-      if (interaction.isButton) {
-        if (interaction.commandName === 'bump') {
-          await bumpHandler(interaction);
-        }
+      if (interaction.isButton && interaction.commandName === 'bump') {
+        await handleBumpInteraction(interaction);
       }
     });
   } catch (error) {
     console.log('Error while registering commands', error);
   }
 };
+
+export default registerCommands;
