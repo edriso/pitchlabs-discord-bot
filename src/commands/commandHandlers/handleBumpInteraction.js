@@ -11,10 +11,11 @@ export const handleBumpInteraction = async (interaction) => {
     lastBumpTimestamp = currentTimestamp;
     interaction.reply('Server successfully bumped!');
   } else {
-    interaction.reply(
-      `Sorry, the server was already bumped. Please wait ${
+    interaction.reply({
+      content: `Sorry, the server was already bumped. Please wait ${
         BUMP_COOLDOWN_DURATION / (1000 * 60)
       } minutes from the last bump.`,
-    );
+      ephemeral: true,
+    });
   }
 };
