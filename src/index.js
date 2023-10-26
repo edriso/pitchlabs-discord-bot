@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import client from './bot.js';
 import connectDB from './db/connect.js';
 import spamPrevention from './eventHandlers/spamPrevention.js';
+import { registerCommands } from './commands/index.js';
 
 dotenv.config();
 
@@ -54,14 +55,17 @@ const initializeFeatures = async () => {
     console.error(`Error while connecting to DB:`, error);
   }
 
+  // Events
   client.on('ready', () => {
     console.log(`${client.user.tag} is online.`);
   });
 
-  // Events
   client.on('messageCreate', (message) => {
     spamPrevention.execute(message);
   });
+
+  // Commands
+  await registerCommands();
 
   client.on('error', (error) => {
     console.error('The bot encountered an error:', error);
