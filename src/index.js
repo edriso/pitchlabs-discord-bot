@@ -4,7 +4,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import client from './bot.js';
 import connectDB from './db/connect.js';
-import spamPrevention from './eventsHandlers/spamPrevention.js';
+import spamPrevention from './eventHandlers/spamPrevention.js';
 
 dotenv.config();
 
