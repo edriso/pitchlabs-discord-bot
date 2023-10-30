@@ -19,4 +19,5 @@ const bump = async (interaction) => {
     });
   }
 };
+
 export default bump;
