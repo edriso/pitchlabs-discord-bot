@@ -50,22 +50,21 @@ const initializeFeatures = async () => {
 (async () => {
   try {
     await connectDB(process.env.MONGO_URI);
-    initializeFeatures();
   } catch (error) {
     console.error(`Error while connecting to DB:`, error);
   }
 
-  // Events
   client.on('ready', () => {
+    process.env.CLIENT_ID = client.user.id;
+    process.env.GUILD_ID = client.guilds.cache.first().id;
+    registerCommands();
+    initializeFeatures();
     console.log(`${client.user.tag} is online.`);
   });
 
   client.on('messageCreate', (message) => {
     spamPrevention.execute(message);
   });
-
-  // Commands
-  await registerCommands();
 
   client.on('error', (error) => {
     console.error('The bot encountered an error:', error);
