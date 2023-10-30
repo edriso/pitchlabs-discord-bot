@@ -54,6 +54,38 @@ Welcome to the Pitchlabs Community Bot! 🚀
 
     Inside the `initialize` function, write the code for your new feature. This is where you'll define what the feature does and how it interacts with your Discord bot.
 
+- **Creating New Commands:**
+  To create a new command for the bot, follow these steps:
+
+  1. **Add Command to `commandList.js`:**
+     Inside the `/commands` directory, locate the `commandList.js` file. Add a new entry to the `commands` array with the format:
+
+     ```javascript
+     {
+       name: 'commandName',
+       description: 'Description of the command, maximum 100 characters.',
+     }
+     ```
+
+     Replace `'commandName'` with the actual name of your command and provide a brief description.
+
+  2. **Create Command Handler File:**
+     Inside the `/commandHandlers` directory, create a new JavaScript file with the same name as your command (e.g., `commandName.js`).
+  3. **Implement Command Logic:**
+     In the newly created command handler file, implement the logic for your command. Export an asynchronous function with the same name as the file (e.g., `commandName`) that accepts the `interaction` object as a parameter. Here's an example structure:
+
+     ```javascript
+     const commandName = async (interaction) => {
+       // Command logic goes here
+     };
+
+     export default commandName;
+     ```
+
+     Implement the desired functionality of your command within the `commandName` function.
+
+  The bot dynamically handles incoming commands based on the registered commands in `commandList.js`. There is no need to modify the core code for each new command. Ensure the command in `commandList.js` matches the filename in `commandHandlers` to maintain consistency.
+
 ## Documentation and Resources
 
 - Explore Discord's official documentation: [Discord Docs](https://discord.com/developers/docs/intro)
