@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import client from './bot.js';
 import connectDB from './db/connect.js';
 import spamPrevention from './eventHandlers/spamPrevention.js';
-import registerCommands from './commands/index.js';
+import registerCommands from './commands/registerCommands.js';
 
 dotenv.config();
 
