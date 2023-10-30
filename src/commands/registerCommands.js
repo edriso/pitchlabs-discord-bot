@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import { REST, Routes } from 'discord.js';
 import client from '../bot.js';
-import { handleBumpInteraction } from './commandHandlers/handleBumpInteraction.js';
 
 dotenv.config();
 
@@ -14,6 +13,10 @@ const commands = [
     name: 'bump',
     description: 'Bump the server to the top.',
   },
+  {
+    name: 'library',
+    description: 'Enter a world of information for successful business.',
+  },
 ];
 
 const registerCommands = async () => {
@@ -24,10 +27,17 @@ const registerCommands = async () => {
     );
 
     client.on('interactionCreate', async (interaction) => {
-      if (!interaction.isChatInputCommand()) return;
+      if (!interaction.isChatInputCommand() || !interaction.isButton) return;
 
-      if (interaction.isButton && interaction.commandName === 'bump') {
-        await handleBumpInteraction(interaction);
+      const commandName = interaction.commandName;
+
+      try {
+        const { default: commandHandler } = await import(
+          `./commandHandlers/${commandName}.js`
+        );
+        await commandHandler(interaction);
+      } catch (error) {
+        console.error(`Error handling command ${commandName}:`, error);
       }
     });
   } catch (error) {
