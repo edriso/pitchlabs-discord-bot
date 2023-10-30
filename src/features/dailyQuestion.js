@@ -1,10 +1,19 @@
 import cron from 'node-cron';
 import client from '../bot.js';
 import { ChannelTypes, ChannelNames } from '../config/constants.js';
-import { questions } from '../config/questions.js';
+import { businessQuestions, icebreakerQuestions } from '../config/questions.js';
 
 let lastQuestionAsked = '';
+let lastQuestionAskedType = 'business';
 const getRandomQuestion = () => {
+  let questions = [];
+  if (lastQuestionAskedType === 'business') {
+    questions = icebreakerQuestions;
+    lastQuestionAskedType = 'icebreaker';
+  } else {
+    questions = businessQuestions;
+    lastQuestionAskedType = 'business';
+  }
   return questions[Math.floor(Math.random() * questions.length)];
 };
 
