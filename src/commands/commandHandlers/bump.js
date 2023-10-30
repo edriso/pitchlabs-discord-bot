@@ -2,7 +2,7 @@ import { BUMP_COOLDOWN_DURATION } from '../../config/constants.js';
 
 let lastBumpTimestamp = null;
 
-export const bump = async (interaction) => {
+const bump = async (interaction) => {
   const currentTimestamp = Date.now();
   if (
     !lastBumpTimestamp ||
@@ -19,3 +19,4 @@ export const bump = async (interaction) => {
     });
   }
 };
+export default bump;
