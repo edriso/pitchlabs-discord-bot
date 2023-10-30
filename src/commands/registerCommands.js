@@ -1,23 +1,13 @@
 import dotenv from 'dotenv';
 import { REST, Routes } from 'discord.js';
 import client from '../bot.js';
+import { commands } from './commandList.js';
 
 dotenv.config();
 
 const rest = new REST({ version: '10' }).setToken(
   process.env.DISCORD_BOT_TOKEN,
 );
-
-const commands = [
-  {
-    name: 'bump',
-    description: 'Bump the server to the top.',
-  },
-  {
-    name: 'library',
-    description: 'Enter a world of information for successful business.',
-  },
-];
 
 const registerCommands = async () => {
   try {
