@@ -6,7 +6,7 @@ import client from './bot.js';
 import connectDB from './db/connect.js';
 import spamPrevention from './eventHandlers/spamPrevention.js';
 import registerCommands from './commands/registerCommands.js';
-import Bump from './models/bumpModel.js';
+import upsertBumpRecord from './utils/upsertBumpRecord.js';
 
 dotenv.config();
 
@@ -63,22 +63,14 @@ const initializeFeatures = async () => {
     console.log(`${client.user.tag} is online.`);
   });
 
-  client.on('messageCreate', async (message) => {
+  client.on('messageCreate', (message) => {
     spamPrevention.execute(message);
     if (
       message.interaction &&
       message.interaction.commandName === 'bump' &&
       message.interaction.type === 2
     ) {
-      try {
-        await Bump.findOneAndUpdate(
-          {},
-          { bumpedAt: Date.now() },
-          { upsert: true },
-        );
-      } catch (error) {
-        console.error('Error updating bump record:', error);
-      }
+      upsertBumpRecord();
     }
   });
 

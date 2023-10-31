@@ -1,5 +1,6 @@
 import { BUMP_COOLDOWN_DURATION } from '../../config/constants.js';
 import Bump from '../../models/bumpModel.js';
+import upsertBumpRecord from '../../utils/upsertBumpRecord.js';
 
 const bump = async (interaction) => {
   try {
@@ -10,12 +11,7 @@ const bump = async (interaction) => {
       !lastBumpRecord ||
       currentTimestamp - lastBumpRecord.bumpedAt >= BUMP_COOLDOWN_DURATION
     ) {
-      // update or create a new record with the current timestamp
-      await Bump.findOneAndUpdate(
-        {},
-        { bumpedAt: currentTimestamp },
-        { upsert: true },
-      );
+      upsertBumpRecord();
       interaction.reply('Server successfully bumped!');
     } else {
       interaction.reply({
