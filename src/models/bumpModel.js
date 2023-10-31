@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const bumpSchema = new mongoose.Schema({
   bumpedAt: {
     type: Date,
-    default: null,
+    default: Date.now,
   },
 });
 
