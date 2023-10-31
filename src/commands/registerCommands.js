@@ -1,15 +1,12 @@
-import dotenv from 'dotenv';
 import { REST, Routes } from 'discord.js';
 import client from '../bot.js';
 import { commands } from './commandList.js';
 
-dotenv.config();
-
-const rest = new REST({ version: '10' }).setToken(
-  process.env.DISCORD_BOT_TOKEN,
-);
-
 const registerCommands = async () => {
+  const rest = new REST({ version: '10' }).setToken(
+    process.env.DISCORD_BOT_TOKEN,
+  );
+
   try {
     await rest.put(
       Routes.applicationGuildCommands(
