@@ -9,7 +9,7 @@ import {
 import Bump from '../models/bumpModel.js';
 
 export const initialize = () => {
-  cron.schedule('0 */1 * * *', async () => {
+  cron.schedule('*/15 * * * *', async () => {
     const lastBumpRecord = await Bump.findOne({});
     const currentTime = Date.now();
     if (
@@ -27,9 +27,10 @@ export const initialize = () => {
           const adminRole = guild.roles.cache.find(
             (role) => role.name === Roles.ADMIN,
           );
-          selectedChannel.send(
-            `Hey ${adminRole || ''}, Time to bump the server!`,
-          );
+          const message = adminRole
+            ? `Hey ${adminRole}, it's time to bump the server! 🚀`
+            : `Time to bump the server!`;
+          selectedChannel.send(message);
         } else {
           console.error(
             `${ChannelNames.GENERAL} channel not found in ${guild.name}.`,
