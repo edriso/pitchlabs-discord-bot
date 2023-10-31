@@ -4,6 +4,7 @@ import {
   ChannelTypes,
   ChannelNames,
   BUMP_COOLDOWN_DURATION,
+  Roles,
 } from '../config/constants.js';
 import Bump from '../models/bumpModel.js';
 
@@ -23,7 +24,12 @@ export const initialize = () => {
         );
 
         if (selectedChannel) {
-          selectedChannel.send(`**Time to bump the server**`);
+          const adminRole = guild.roles.cache.find(
+            (role) => role.name === Roles.ADMIN,
+          );
+          selectedChannel.send(
+            `Hey ${adminRole || ''}, Time to bump the server!`,
+          );
         } else {
           console.error(
             `${ChannelNames.GENERAL} channel not found in ${guild.name}.`,
