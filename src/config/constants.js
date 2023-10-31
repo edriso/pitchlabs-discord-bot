@@ -4,6 +4,10 @@ export const BAN_THRESHOLD = 2;
 
 export const BUMP_COOLDOWN_DURATION = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
 
+export const Roles = {
+  ADMIN: 'Admin',
+};
+
 export const ChannelNames = {
   GENERAL: 'general',
   INTRODUCTION: 'introduction',
