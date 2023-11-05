@@ -83,6 +83,6 @@ const initializeFeatures = async () => {
   client.login(process.env.DISCORD_BOT_TOKEN);
 })();
 
-if (process.env.FREE_SERVER_URL && isValidUrl(process.env.FREE_SERVER_URL)) {
-  keepAlive(process.env.FREE_SERVER_URL);
+if (process.env.APP_URL_ALIVE && isValidUrl(process.env.APP_URL_ALIVE)) {
+  keepAlive(process.env.APP_URL_ALIVE);
 }
