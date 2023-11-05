@@ -7,8 +7,6 @@ import connectDB from './db/connect.js';
 import spamPrevention from './eventHandlers/spamPrevention.js';
 import registerCommands from './commands/registerCommands.js';
 import upsertBumpRecord from './utils/upsertBumpRecord.js';
-import { keepAlive } from './utils/keepAlive.js';
-import { isValidUrl } from './utils/isValidUrl.js';
 
 dotenv.config();
 
@@ -82,7 +80,3 @@ const initializeFeatures = async () => {
 
   client.login(process.env.DISCORD_BOT_TOKEN);
 })();
-
-if (process.env.APP_URL_ALIVE && isValidUrl(process.env.APP_URL_ALIVE)) {
-  keepAlive(process.env.APP_URL_ALIVE);
-}
